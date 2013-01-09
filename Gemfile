@@ -26,6 +26,8 @@ group :test do
     gem 'rspec-rails'
     gem 'cucumber-rails', :require => false
     gem 'database_cleaner'
+    gem 'factory_girl_rails'
+    gem 'capybara'
 end
 
 gem 'devise'
