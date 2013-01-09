@@ -1,4 +1,4 @@
 When /^I create a request$/ do
-    pending # express the regexp above with the code you wish you had
+    Request.new(:title  => "Recopy lab 1.1", :username  => @pepito)
 end
 
