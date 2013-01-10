@@ -4,7 +4,7 @@ class CreateRequests < ActiveRecord::Migration
       t.string :title
       t.text :description
       t.datetime :date
-      t.integer :owner
+      t.integer :owner_id
 
       t.timestamps
     end

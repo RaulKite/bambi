@@ -16,13 +16,28 @@ describe 'request' do
     request.should be_valid
   end
 
-  it "has an owner" do
-    pending
+  it "is invalid without owner" do
+    request = Request.new :title => "Change monitor", :description => "Change it, plis!!", :date => Time.now
+    request.should_not be_valid
   end
 
-  it "has a title" 
-  it "has a description"
-  it "has a date"
-  it "has state"
+  it "is invalid without a title" do
+    request = Request.new :owner => FactoryGirl.create(:user), :description => "Change it, plis!!", :date => Time.now
+    request.should_not be_valid
+  end
+
+  it "is invalid without a description" do
+    request = Request.new :owner => FactoryGirl.create(:user), :title => "Change monitor", :date => Time.now
+    request.should_not be_valid
+  end
+
+  it "is invalid without a date" do
+    request = Request.new :owner => FactoryGirl.create(:user), :description => "Change it, plis!!", :title => "Change monitor"
+    request.should_not be_valid
+  end
+
+  it "has state" do
+ 
+  end
 
 end
