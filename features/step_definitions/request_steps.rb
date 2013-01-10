@@ -1,4 +1,4 @@
 When /^I create a request$/ do
-    Request.new(:title  => "Recopy lab 1.1", :owner  => @pepito)
+    Request.create!(:title  => "Recopy lab 1.1", :description => "All pcs ", :date => Time.now, :owner  => @pepito)
 end
 

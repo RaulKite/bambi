@@ -3,6 +3,10 @@ When /^I am a teacher of the Faculty$/ do
 end
 
 Then /^I receive an email$/ do
-    pending # express the regexp above with the code you wish you had
+  @email = ActionMailer::Base.deliveries.first
+  @email.from.should == ['ccalculo@um.es']
+  @email.to.should == ['pepito@um.es']
+  @email.body.should include("Peticion para Centro de Calculo creada")
+#   RequestMailer.should_receive(:request_created)
 end
 
