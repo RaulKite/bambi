@@ -1,4 +1,9 @@
 Bambi::Application.routes.draw do
+
+  #get "request/new"
+  #post "request/create"
+  resources :request
+
   devise_for :users
 
   get "home/index"

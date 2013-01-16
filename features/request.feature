@@ -5,17 +5,18 @@ Feature: Users can make requests
     And  I create a request
     Then I receive an email
 
-  Scenario:
-    When I am a teacher of the Faculty
-    And I click in Crear peticion
+  Scenario: I can create request if I'm a teacher
+    When I am an authenticated teacher of the Faculty
+    And I go to New Request page
     And I fill request fields
     And I click in Guardar
-    Then I request is created
+    Then A request is created
   
   
+  @wip
   Scenario: View list of requests
     When I am a teacher of the Faculty
-    And I click in Ver peticiones
+    And I go to List Requests page
     Then I see my requests
 
 

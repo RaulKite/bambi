@@ -1,5 +1,6 @@
-When /^I am a teacher of the Faculty$/ do
-  @pepito = User.new(:username => "pepito@um.es")   
+When /^I am an authenticated teacher of the Faculty$/ do
+  user = FactoryGirl.create(:user)
+  login_as(user, :scope => "user")
 end
 
 Then /^I receive an email$/ do
@@ -7,6 +8,8 @@ Then /^I receive an email$/ do
   @email.from.should == ['ccalculo@um.es']
   @email.to.should == ['pepito@um.es']
   @email.body.should include("Peticion para Centro de Calculo creada")
-#   RequestMailer.should_receive(:request_created)
 end
+
+
+
 
