@@ -13,7 +13,7 @@ class RequestController < ApplicationController
     @request.owner = current_user
     @request.date = Time.now
     
-    if @request.save!
+    if @request.save
       redirect_to @request, :notice => "Peticion creada correctamente"
     else
       render :action => "new"

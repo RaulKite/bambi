@@ -1,5 +1,15 @@
 %h1 Crear nueva peticion
 
+
+- if @request.errors.any?
+  #error
+  %h4
+    = pluralize(@request.errors.count, "error")
+    "prohibited this request to be saved"
+  %ul 
+    - @request.errors.full_messages.each do |msg| 
+      %li= msg
+
 = form_for @request, :url => { :action => 'create' } do |f|
   = f.text_field :title, :id => 'title'
   = f.text_area :description, :id => 'description'
