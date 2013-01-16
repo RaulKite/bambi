@@ -11,7 +11,11 @@
       %li= msg
 
 = form_for @request, :url => { :action => 'create' } do |f|
+  .label
+    Titulo
   = f.text_field :title, :id => 'title'
+  .label
+    Descripcion
   = f.text_area :description, :id => 'description'
   = f.submit 'Guardar'
 

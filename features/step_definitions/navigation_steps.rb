@@ -6,6 +6,7 @@ When /^I click in Guardar$/ do
   click_button('Guardar')
 end
 
-Then /^I see my requests$/ do
-    pending # express the regexp above with the code you wish you had
+When /^I click in New$/ do
+  click_button('Create')
 end
+

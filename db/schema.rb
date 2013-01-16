@@ -11,7 +11,40 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130109135016) do
+ActiveRecord::Schema.define(:version => 20130116113449) do
+
+  create_table "cursoacademicos", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "laboratorios", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "peticionsoftwares", :force => true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.string   "asignatura"
+    t.string   "titulacion"
+    t.string   "curso"
+    t.string   "sistemaoperativo"
+    t.text     "software"
+    t.string   "dondeobtener"
+    t.date     "fechacomienzo"
+    t.text     "cometario"
+    t.datetime "fechayhora"
+    t.integer  "cursoacademico_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "peticionsoftwares", ["cursoacademico_id"], :name => "index_peticionsoftwares_on_cursoacademico_id"
+  add_index "peticionsoftwares", ["user_id"], :name => "index_peticionsoftwares_on_user_id"
 
   create_table "requests", :force => true do |t|
     t.string   "title"

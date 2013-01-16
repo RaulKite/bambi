@@ -1,5 +1,14 @@
 Bambi::Application.routes.draw do
 
+  resources :cursoacademicos
+
+
+  resources :peticionsoftwares
+
+
+  resources :laboratorios
+
+
   #get "request/new"
   #post "request/create"
   resources :request
