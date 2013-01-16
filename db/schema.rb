@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(:version => 20130116113449) do
     t.text     "software"
     t.string   "dondeobtener"
     t.date     "fechacomienzo"
-    t.text     "cometario"
+    t.text     "comentario"
     t.datetime "fechayhora"
     t.integer  "cursoacademico_id"
     t.datetime "created_at",        :null => false

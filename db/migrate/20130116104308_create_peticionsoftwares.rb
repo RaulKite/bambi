@@ -10,7 +10,7 @@ class CreatePeticionsoftwares < ActiveRecord::Migration
       t.text :software
       t.string :dondeobtener
       t.date :fechacomienzo
-      t.text :cometario
+      t.text :comentario
       t.datetime :fechayhora
       t.references :cursoacademico
 
