@@ -18,6 +18,11 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+
+  gem "haml-rails"
+  gem "twitter-bootstrap-rails"
+  gem 'bootswatch-rails'
+  gem 'bootstrap-sass'
 end
 
 gem 'jquery-rails'
@@ -33,8 +38,6 @@ end
 gem 'devise'
 gem 'devise_cas_authenticatable'
 
-gem "haml-rails"
-gem "twitter-bootstrap-rails"
 
 
 
