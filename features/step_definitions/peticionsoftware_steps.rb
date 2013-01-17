@@ -15,3 +15,23 @@ Then /^A "(.*?)" is created$/ do |arg1|
   page.should have_content("Peticion de Software creada correctamente.")
 end
 
+When /^I create a new Peticion de Software$/ do
+  Peticionsoftware.create!(
+      :user =>  @pepito,
+      :cursoacademico_id => 1,
+      :title        => "R", 
+      :titulacion   => "Grado en Informatica", 
+      :curso        => "Primero",
+      :asignatura   => "Calculo",
+      :software     => "R version 11.4",
+      :sistemaoperativo => "Windows",
+      :fechacomienzo => 1.month.from_now,
+      :fechayhora  => Time.now
+  ) 
+end
+
+Then /I see my "Peticion de Software"/ do
+  page.should have_content("Grado en Informatica")
+  page.should have_content("Calculo")
+  page.should have_content("R version 11.4")
+end

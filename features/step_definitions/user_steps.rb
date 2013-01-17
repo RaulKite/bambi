@@ -1,6 +1,6 @@
 When /^I am an authenticated teacher of the Faculty$/ do
-  user = FactoryGirl.create(:user)
-  login_as(user, :scope => "user")
+  @pepito = FactoryGirl.create(:user)
+  login_as(@pepito, :scope => "user")
 end
 
 Then /^I receive an email$/ do

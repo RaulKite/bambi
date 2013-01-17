@@ -1,15 +1,12 @@
 - model_class = Peticionsoftware
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human
+  %h1 
+    Petición de software
 
 %p
-  %strong= model_class.human_attribute_name(:title) + ':'
+  %strong= 'Profesor'
   %br
-  = @peticionsoftware.title
-%p
-  %strong= model_class.human_attribute_name(:user_id) + ':'
-  %br
-  = @peticionsoftware.user_id
+  = link_to @peticionsoftware.user.username, "http://www.um.es/atica/directorio/?nivel=&lang=0&vista=unidades&search=#{@peticionsoftware.user.username}", :target => "_blank"
 %p
   %strong= model_class.human_attribute_name(:asignatura) + ':'
   %br

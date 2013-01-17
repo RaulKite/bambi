@@ -1,10 +1,6 @@
 = form_for @peticionsoftware, :html => { :class => 'form-horizontal' } do |f|
   .box
     .control-group
-      = f.label "Titulo", :class => 'control-label'
-      .controls
-        = f.text_field :title, :class => 'text_field'
-    .control-group
       = f.label :cursoacademico_id, :class => 'control-label'
       .controls
         = f.select :cursoacademico_id, options_for_select(Cursoacademico.all.map{|c| [c.name,c.id]})
@@ -24,7 +20,7 @@
   .control-group
     = f.label "Sistema Operativo", :class => 'control-label'
     .controls
-      - @platforms = ['Windows','Linux'] 
+      - @platforms = ['Windows','Linux','Otro (Rellenar en comentario)'] 
       = f.select(:sistemaoperativo, @platforms) 
   .control-group
     = f.label 'Software y versión', :class => 'control-label'
@@ -35,7 +31,7 @@
     .controls
       = f.text_field :dondeobtener, :class => 'text_field'
   .control-group
-    = f.label :fechacomienzo, :class => 'control-label'
+    = f.label 'Fecha de Comienzo', :class => 'control-label'
     .controls
       = f.text_field :fechacomienzo, :class => 'date', 'data-behaviour' => 'datepicker'
   .control-group
@@ -43,5 +39,5 @@
     .controls
       = f.text_area :comentario, :class => 'text_area', :size => '20x10'
   .form-actions
-    = f.submit nil, :class => 'btn btn-primary'
+    = f.submit 'Guardar', :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), peticionsoftwares_path, :class => 'btn'

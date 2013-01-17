@@ -2,7 +2,11 @@ class PeticionsoftwaresController < ApplicationController
   # GET /peticionsoftwares
   # GET /peticionsoftwares.json
   def index
-    @peticionsoftwares = Peticionsoftware.all
+    if current_user.admin?
+      @peticionsoftwares = Peticionsoftware.all
+    else
+      @peticionsoftwares = current_user.peticionsoftwares.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

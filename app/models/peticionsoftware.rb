@@ -5,7 +5,6 @@ class Peticionsoftware < ActiveRecord::Base
 
   validates :user, :presence => true
   validates :cursoacademico_id, :presence => true
-  validates :title, :presence => true
   validates :titulacion, :presence => true
   validates :curso, :presence => true
   validates :asignatura, :presence => true

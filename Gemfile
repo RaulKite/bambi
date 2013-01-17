@@ -36,6 +36,8 @@ end
 
 gem 'devise'
 gem 'devise_cas_authenticatable'
+gem 'stamp'
+gem 'letter_opener'
 
 
 
