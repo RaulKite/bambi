@@ -1,9 +1,17 @@
 When /^I fill Peticion fields$/ do
-  fill_in 'Title', :with => "titulo"
-
+  fill_in 'peticionsoftware_title', :with => "titulo"
+  select  '2012/2013', :from  => 'peticionsoftware_cursoacademico_id'
+  fill_in 'peticionsoftware_titulacion', :with => "titulacion"
+  select  'Primero', :from => 'peticionsoftware_curso'
+  fill_in 'peticionsoftware_asignatura', :with  => "Calculo"
+  select  'Windows', :from => 'peticionsoftware_sistemaoperativo'
+  fill_in 'peticionsoftware_software', :with  => "R 11.4"
+  fill_in 'peticionsoftware_dondeobtener', :with => "http://www.um.es"
+  fill_in 'peticionsoftware_fechacomienzo', :with => "2012-02-25"
+  fill_in 'peticionsoftware_comentario', :with  => "Comentario"
 end
 
 Then /^A "(.*?)" is created$/ do |arg1|
-    pending # express the regexp above with the code you wish you had
+  page.should have_content("Peticion de Software creada correctamente.")
 end
 

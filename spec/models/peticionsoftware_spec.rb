@@ -5,7 +5,7 @@ describe Peticionsoftware do
   def valid_attributes
     {
       :user         => FactoryGirl.create(:user),
-      :cursoacademico => FactoryGirl.create(:cursoacademico),
+      :cursoacademico_id => 1,
       :title        => "R", 
       :titulacion   => "Grado en Informatica", 
       :curso        => "Primero",
@@ -14,8 +14,6 @@ describe Peticionsoftware do
       :sistemaoperativo => "Windows",
       :fechayhora   => Time.now,
       :fechacomienzo => 1.month.from_now,
-      :dondeobtener   => "http://www.r-project.org",
-      :comentario   => "Compilar con builder c++"
     }
   end
 
@@ -26,7 +24,7 @@ describe Peticionsoftware do
 
   it "is invalid without user" do
     peticionsoftware = Peticionsoftware.new(
-      :cursoacademico => FactoryGirl.create(:cursoacademico),
+      :cursoacademico_id => 1,
       :title        => "R", 
       :titulacion   => "Grado en Informatica", 
       :curso        => "Primero",
@@ -60,7 +58,7 @@ describe Peticionsoftware do
   it "is invalid without title" do
     peticionsoftware = Peticionsoftware.new(
       :user         => FactoryGirl.create(:user),
-      :cursoacademico => FactoryGirl.create(:cursoacademico),
+      :cursoacademico_id => 1,
       :titulacion   => "Grado en Informatica", 
       :curso        => "Primero",
       :asignatura   => "Calculo",
@@ -76,7 +74,7 @@ describe Peticionsoftware do
   it "is invalid without titulacion" do
     peticionsoftware = Peticionsoftware.new(
       :user         => FactoryGirl.create(:user),
-      :cursoacademico => FactoryGirl.create(:cursoacademico),
+      :cursoacademico_id => 1,
       :title        => "R",
       :curso        => "Primero",
       :asignatura   => "Calculo",
@@ -92,7 +90,7 @@ describe Peticionsoftware do
   it "is invalid without curso" do
     peticionsoftware = Peticionsoftware.new(
       :user         => FactoryGirl.create(:user),
-      :cursoacademico => FactoryGirl.create(:cursoacademico),
+      :cursoacademico_id => 1,
       :title        => "R",
       :titulacion   => "Grado en Informatica",
       :asignatura   => "Calculo",
@@ -108,7 +106,7 @@ describe Peticionsoftware do
   it "is invalid without asignatura" do
     peticionsoftware = Peticionsoftware.new(
       :user         => FactoryGirl.create(:user),
-      :cursoacademico => FactoryGirl.create(:cursoacademico),
+      :cursoacademico_id => 1,
       :title        => "R",
       :titulacion   => "Grado en Informatica",
       :curso        => "Primero",
@@ -124,7 +122,7 @@ describe Peticionsoftware do
   it "is invalid without software" do
     peticionsoftware = Peticionsoftware.new(
       :user         => FactoryGirl.create(:user),
-      :cursoacademico => FactoryGirl.create(:cursoacademico),
+      :cursoacademico_id => 1,
       :title        => "R",
       :titulacion   => "Grado en Informatica",
       :curso        => "Primero",
@@ -140,7 +138,7 @@ describe Peticionsoftware do
   it "is invalid without sistemaoperativo" do
     peticionsoftware = Peticionsoftware.new(
       :user         => FactoryGirl.create(:user),
-      :cursoacademico => FactoryGirl.create(:cursoacademico),
+      :cursoacademico_id => 1,
       :title        => "R",
       :titulacion   => "Grado en Informatica",
       :curso        => "Primero",
@@ -156,7 +154,7 @@ describe Peticionsoftware do
   it "is invalid without fechayhora" do
     peticionsoftware = Peticionsoftware.new(
       :user         => FactoryGirl.create(:user),
-      :cursoacademico => FactoryGirl.create(:cursoacademico),
+      :cursoacademico_id => 1,
       :title        => "R",
       :titulacion   => "Grado en Informatica",
       :curso        => "Primero",
@@ -172,7 +170,7 @@ describe Peticionsoftware do
   it "is invalid without fechacomienzo" do
     peticionsoftware = Peticionsoftware.new(
       :user         => FactoryGirl.create(:user),
-      :cursoacademico => FactoryGirl.create(:cursoacademico),
+      :cursoacademico_id => 1,
       :title        => "R",
       :titulacion   => "Grado en Informatica",
       :curso        => "Primero",

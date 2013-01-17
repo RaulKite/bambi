@@ -41,10 +41,12 @@ class PeticionsoftwaresController < ApplicationController
   # POST /peticionsoftwares.json
   def create
     @peticionsoftware = Peticionsoftware.new(params[:peticionsoftware])
+    @peticionsoftware.user = current_user
+    @peticionsoftware.fechayhora = Time.now
 
     respond_to do |format|
       if @peticionsoftware.save
-        format.html { redirect_to @peticionsoftware, notice: 'Peticionsoftware was successfully created.' }
+        format.html { redirect_to @peticionsoftware, notice: 'Peticion de Software creada correctamente. En unos momentos recibira un correo con la confirmacion.' }
         format.json { render json: @peticionsoftware, status: :created, location: @peticionsoftware }
       else
         format.html { render action: "new" }

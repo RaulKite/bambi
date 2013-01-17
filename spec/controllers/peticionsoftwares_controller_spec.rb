@@ -25,8 +25,33 @@ describe PeticionsoftwaresController do
   # Peticionsoftware. As you add validations to Peticionsoftware, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { "title" => "MyString" }
+    {
+      :user =>  @pepito,
+      :cursoacademico_id => 1,
+      :title        => "R", 
+      :titulacion   => "Grado en Informatica", 
+      :curso        => "Primero",
+      :asignatura   => "Calculo",
+      :software     => "R version 11.4",
+      :sistemaoperativo => "Windows",
+      :fechacomienzo => 1.month.from_now,
+      :fechayhora  => Time.now
+    }
   end
+
+  def form_attributes
+    {
+      :cursoacademico_id => 1,
+      :title        => "R", 
+      :titulacion   => "Grado en Informatica", 
+      :curso        => "Primero",
+      :asignatura   => "Calculo",
+      :software     => "R version 11.4",
+      :sistemaoperativo => "Windows",
+      :fechacomienzo => 1.month.from_now
+    }
+  end
+
 
   describe "GET index" do
     it "assigns all peticionsoftwares as @peticionsoftwares" do
@@ -63,18 +88,18 @@ describe PeticionsoftwaresController do
     describe "with valid params" do
       it "creates a new Peticionsoftware" do
         expect {
-          post :create, {:peticionsoftware => valid_attributes}
+          post :create, {:peticionsoftware => form_attributes}
         }.to change(Peticionsoftware, :count).by(1)
       end
 
       it "assigns a newly created peticionsoftware as @peticionsoftware" do
-        post :create, {:peticionsoftware => valid_attributes}
+        post :create, {:peticionsoftware => form_attributes}
         assigns(:peticionsoftware).should be_a(Peticionsoftware)
         assigns(:peticionsoftware).should be_persisted
       end
 
       it "redirects to the created peticionsoftware" do
-        post :create, {:peticionsoftware => valid_attributes}
+        post :create, {:peticionsoftware => form_attributes}
         response.should redirect_to(Peticionsoftware.last)
       end
     end
@@ -83,7 +108,7 @@ describe PeticionsoftwaresController do
       it "assigns a newly created but unsaved peticionsoftware as @peticionsoftware" do
         # Trigger the behavior that occurs when invalid params are submitted
         Peticionsoftware.any_instance.stub(:save).and_return(false)
-        post :create, {:peticionsoftware => { "title" => "invalid value" }}
+        post :create, {:peticionsoftware => { "title" => nil }}
         assigns(:peticionsoftware).should be_a_new(Peticionsoftware)
       end
 
@@ -110,13 +135,14 @@ describe PeticionsoftwaresController do
 
       it "assigns the requested peticionsoftware as @peticionsoftware" do
         peticionsoftware = Peticionsoftware.create! valid_attributes
-        put :update, {:id => peticionsoftware.to_param, :peticionsoftware => valid_attributes}
+        put :update, {:id => peticionsoftware.to_param, :peticionsoftware => { "title" => "MyString" }}
+
         assigns(:peticionsoftware).should eq(peticionsoftware)
       end
 
       it "redirects to the peticionsoftware" do
         peticionsoftware = Peticionsoftware.create! valid_attributes
-        put :update, {:id => peticionsoftware.to_param, :peticionsoftware => valid_attributes}
+        put :update, {:id => peticionsoftware.to_param, :peticionsoftware => form_attributes}
         response.should redirect_to(peticionsoftware)
       end
     end

@@ -1,52 +1,47 @@
 = form_for @peticionsoftware, :html => { :class => 'form-horizontal' } do |f|
+  .box
+    .control-group
+      = f.label "Titulo", :class => 'control-label'
+      .controls
+        = f.text_field :title, :class => 'text_field'
+    .control-group
+      = f.label :cursoacademico_id, :class => 'control-label'
+      .controls
+        = f.select :cursoacademico_id, options_for_select(Cursoacademico.all.map{|c| [c.name,c.id]})
+    .control-group
+      = f.label :titulacion, :class => 'control-label'
+      .controls
+        = f.text_field :titulacion, :class => 'text_field'
+    .control-group
+      = f.label :curso, :class => 'control-label'
+      .controls
+        - @cursos = ['Primero','Segundo','Tercero','Cuarto'] 
+        = f.select(:curso, @cursos)
+    .control-group
+      = f.label "Asignatura", :class => 'control-label'
+      .controls
+        = f.text_field :asignatura, :class => 'text_field'
   .control-group
-    = f.label :title, :class => 'control-label'
+    = f.label "Sistema Operativo", :class => 'control-label'
     .controls
-      = f.text_field :title, :class => 'text_field'
+      - @platforms = ['Windows','Linux'] 
+      = f.select(:sistemaoperativo, @platforms) 
   .control-group
-    = f.label :user_id, :class => 'control-label'
+    = f.label 'Software y versión', :class => 'control-label'
     .controls
-      = f.number_field :user_id, :class => 'number_field'
+      = f.text_area :software, :class => 'text_area', :size => '20x10'
   .control-group
-    = f.label :asignatura, :class => 'control-label'
-    .controls
-      = f.text_field :asignatura, :class => 'text_field'
-  .control-group
-    = f.label :titulacion, :class => 'control-label'
-    .controls
-      = f.text_field :titulacion, :class => 'text_field'
-  .control-group
-    = f.label :curso, :class => 'control-label'
-    .controls
-      = f.text_field :curso, :class => 'text_field'
-  .control-group
-    = f.label :sistemaoperativo, :class => 'control-label'
-    .controls
-      = f.text_field :sistemaoperativo, :class => 'text_field'
-  .control-group
-    = f.label :software, :class => 'control-label'
-    .controls
-      = f.text_area :software, :class => 'text_area'
-  .control-group
-    = f.label :dondeobtener, :class => 'control-label'
+    = f.label 'Donde Obtener el Software', :class => 'control-label'
     .controls
       = f.text_field :dondeobtener, :class => 'text_field'
   .control-group
     = f.label :fechacomienzo, :class => 'control-label'
     .controls
-      = f.date_select :fechacomienzo, :class => 'date_select'
+      = f.text_field :fechacomienzo, :class => 'date', 'data-behaviour' => 'datepicker'
   .control-group
     = f.label :comentario, :class => 'control-label'
     .controls
-      = f.text_area :comentario, :class => 'text_area'
-  .control-group
-    = f.label :fechayhora, :class => 'control-label'
-    .controls
-      = f.datetime_select :fechayhora, :class => 'datetime_select'
-  .control-group
-    = f.label :cursoacademico_id, :class => 'control-label'
-    .controls
-      = f.number_field :cursoacademico_id, :class => 'number_field'
+      = f.text_area :comentario, :class => 'text_area', :size => '20x10'
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), peticionsoftwares_path, :class => 'btn'
