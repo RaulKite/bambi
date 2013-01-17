@@ -9,4 +9,9 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :requests
+
+
+  def admin?
+    self.username == 'chapu@um.es' || self.username == 'alfonso@um.es' || self.username == 'raul@um.es' || self.username == 'aha2@um.es'
+  end
 end
