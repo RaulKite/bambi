@@ -1,22 +1,21 @@
 = form_for @peticionsoftware, :html => { :class => 'form-horizontal' } do |f|
-  .box
-    .control-group
-      = f.label :cursoacademico_id, :class => 'control-label'
-      .controls
-        = f.select :cursoacademico_id, options_for_select(Cursoacademico.all.map{|c| [c.name,c.id]})
-    .control-group
-      = f.label :titulacion, :class => 'control-label'
-      .controls
-        = f.text_field :titulacion, :class => 'text_field'
-    .control-group
-      = f.label :curso, :class => 'control-label'
-      .controls
-        - @cursos = ['Primero','Segundo','Tercero','Cuarto'] 
-        = f.select(:curso, @cursos)
-    .control-group
-      = f.label "Asignatura", :class => 'control-label'
-      .controls
-        = f.text_field :asignatura, :class => 'text_field'
+  .control-group
+    = f.label :cursoacademico_id, :class => 'control-label'
+    .controls
+      = f.select :cursoacademico_id, options_for_select(Cursoacademico.all.map{|c| [c.name,c.id]})
+  .control-group
+    = f.label "Titulación", :class => 'control-label'
+    .controls
+      = f.text_field :titulacion, :class => 'text_field'
+  .control-group
+    = f.label :curso, :class => 'control-label'
+    .controls
+      - @cursos = ['Primero','Segundo','Tercero','Cuarto'] 
+      = f.select(:curso, @cursos)
+  .control-group
+    = f.label "Asignatura", :class => 'control-label'
+    .controls
+      = f.text_field :asignatura, :class => 'text_field'
   .control-group
     = f.label "Sistema Operativo", :class => 'control-label'
     .controls
@@ -26,6 +25,13 @@
     = f.label 'Software y versión', :class => 'control-label'
     .controls
       = f.text_area :software, :class => 'text_area', :size => '20x10'
+  .control-group
+    = f.label 'Laboratorios', :class => 'control-label'
+    .controls
+      - Laboratorio.all.each do |laboratorio|
+        = laboratorio
+        = check_box_tag "peticionsoftware[laboratorio_ids][]", laboratorio.id, @peticionsoftware.laboratorios.include?(laboratorio)
+        %br
   .control-group
     = f.label 'Donde Obtener el Software', :class => 'control-label'
     .controls

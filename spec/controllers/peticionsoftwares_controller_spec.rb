@@ -35,7 +35,8 @@ describe PeticionsoftwaresController do
       :software     => "R version 11.4",
       :sistemaoperativo => "Windows",
       :fechacomienzo => 1.month.from_now,
-      :fechayhora  => Time.now
+      :fechayhora  => Time.now,
+      :laboratorio_ids => FactoryGirl.create(:laboratorio).id
     }
   end
 
@@ -48,7 +49,8 @@ describe PeticionsoftwaresController do
       :asignatura   => "Calculo",
       :software     => "R version 11.4",
       :sistemaoperativo => "Windows",
-      :fechacomienzo => 1.month.from_now
+      :fechacomienzo => 1.month.from_now,
+      :laboratorio_ids => 2.times.map { FactoryGirl.create(:laboratorio).id}
     }
   end
 
@@ -100,7 +102,7 @@ describe PeticionsoftwaresController do
 
       it "redirects to the created peticionsoftware" do
         post :create, {:peticionsoftware => form_attributes}
-        response.should redirect_to(Peticionsoftware.last)
+        response.should redirect_to(peticionsoftwares_path)
       end
     end
 
@@ -129,8 +131,8 @@ describe PeticionsoftwaresController do
         # specifies that the Peticionsoftware created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Peticionsoftware.any_instance.should_receive(:update_attributes).with({ "title" => "MyString" })
-        put :update, {:id => peticionsoftware.to_param, :peticionsoftware => { "title" => "MyString" }}
+        Peticionsoftware.any_instance.should_receive(:update_attributes).with({ "title" => "MyString", "laboratorio_ids"=>[] }, )
+        put :update, {:id => peticionsoftware.to_param, :peticionsoftware => { "title" => "MyString", "laboratorio_ids"=>[] }}
       end
 
       it "assigns the requested peticionsoftware as @peticionsoftware" do
@@ -143,7 +145,7 @@ describe PeticionsoftwaresController do
       it "redirects to the peticionsoftware" do
         peticionsoftware = Peticionsoftware.create! valid_attributes
         put :update, {:id => peticionsoftware.to_param, :peticionsoftware => form_attributes}
-        response.should redirect_to(peticionsoftware)
+        response.should redirect_to(peticionsoftwares_path)
       end
     end
 

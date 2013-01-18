@@ -50,7 +50,7 @@ class PeticionsoftwaresController < ApplicationController
 
     respond_to do |format|
       if @peticionsoftware.save
-        format.html { redirect_to @peticionsoftware, notice: 'Peticion de Software creada correctamente. En unos momentos recibira un correo con la confirmacion.' }
+        format.html { redirect_to peticionsoftwares_path , notice: 'Peticion de Software creada correctamente. En unos momentos recibira un correo con la confirmacion.' }
         format.json { render json: @peticionsoftware, status: :created, location: @peticionsoftware }
       else
         format.html { render action: "new" }
@@ -63,10 +63,11 @@ class PeticionsoftwaresController < ApplicationController
   # PUT /peticionsoftwares/1.json
   def update
     @peticionsoftware = Peticionsoftware.find(params[:id])
+    params[:peticionsoftware][:laboratorio_ids] ||= []
 
     respond_to do |format|
       if @peticionsoftware.update_attributes(params[:peticionsoftware])
-        format.html { redirect_to @peticionsoftware, notice: 'Peticionsoftware was successfully updated.' }
+        format.html { redirect_to peticionsoftwares_path, notice: 'Peticion de Software modificada correctamente.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

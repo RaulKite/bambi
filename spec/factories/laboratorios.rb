@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :laboratorio do
-    name "MyString"
-    description "MyText"
+    sequence(:name) {|n| "Laboratorio #{n}" }
+    sequence(:description) {|n| "Descripcion #{n}" }
   end
 end

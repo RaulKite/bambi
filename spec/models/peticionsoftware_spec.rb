@@ -14,6 +14,7 @@ describe Peticionsoftware do
       :sistemaoperativo => "Windows",
       :fechayhora   => Time.now,
       :fechacomienzo => 1.month.from_now,
+      :laboratorio_ids  => FactoryGirl.create(:laboratorio).id
     }
   end
 
@@ -34,7 +35,8 @@ describe Peticionsoftware do
       :fechayhora   => Time.now,
       :fechacomienzo => 1.month.from_now,
       :dondeobtener   => "http://www.r-project.org",
-      :comentario   => "Compilar con builder c++")
+      :comentario   => "Compilar con builder c++",
+      :laboratorio_ids  => FactoryGirl.create(:laboratorio).id)
     peticionsoftware.should_not be_valid
   end
 
@@ -51,11 +53,12 @@ describe Peticionsoftware do
       :fechayhora   => Time.now,
       :fechacomienzo => 1.month.from_now,
       :dondeobtener   => "http://www.r-project.org",
-      :comentario   => "Compilar con builder c++")
+      :comentario   => "Compilar con builder c++",
+      :laboratorio_ids  => FactoryGirl.create(:laboratorio).id)
     peticionsoftware.should_not be_valid
   end
 
-  it "is invalid without title" do
+  it "is valid without title" do
     peticionsoftware = Peticionsoftware.new(
       :user         => FactoryGirl.create(:user),
       :cursoacademico_id => 1,
@@ -67,8 +70,9 @@ describe Peticionsoftware do
       :fechayhora   => Time.now,
       :fechacomienzo => 1.month.from_now,
       :dondeobtener   => "http://www.r-project.org",
-      :comentario   => "Compilar con builder c++")
-    peticionsoftware.should_not be_valid
+      :comentario   => "Compilar con builder c++",
+      :laboratorio_ids  => FactoryGirl.create(:laboratorio).id)
+    peticionsoftware.should be_valid
   end
 
   it "is invalid without titulacion" do
@@ -83,7 +87,8 @@ describe Peticionsoftware do
       :fechayhora   => Time.now,
       :fechacomienzo => 1.month.from_now,
       :dondeobtener   => "http://www.r-project.org",
-      :comentario   => "Compilar con builder c++")
+      :comentario   => "Compilar con builder c++",
+      :laboratorio_ids  => FactoryGirl.create(:laboratorio).id)
     peticionsoftware.should_not be_valid
   end
 
@@ -99,7 +104,8 @@ describe Peticionsoftware do
       :fechayhora   => Time.now,
       :fechacomienzo => 1.month.from_now,
       :dondeobtener   => "http://www.r-project.org",
-      :comentario   => "Compilar con builder c++")
+      :comentario   => "Compilar con builder c++",
+      :laboratorio_ids  => FactoryGirl.create(:laboratorio).id)
     peticionsoftware.should_not be_valid
   end
 
@@ -115,7 +121,8 @@ describe Peticionsoftware do
       :fechayhora   => Time.now,
       :fechacomienzo => 1.month.from_now,
       :dondeobtener   => "http://www.r-project.org",
-      :comentario   => "Compilar con builder c++")
+      :comentario   => "Compilar con builder c++",
+      :laboratorio_ids  => FactoryGirl.create(:laboratorio).id)
     peticionsoftware.should_not be_valid
   end
 
@@ -131,7 +138,8 @@ describe Peticionsoftware do
       :fechayhora   => Time.now,
       :fechacomienzo => 1.month.from_now,
       :dondeobtener   => "http://www.r-project.org",
-      :comentario   => "Compilar con builder c++")
+      :comentario   => "Compilar con builder c++",
+      :laboratorio_ids  => FactoryGirl.create(:laboratorio).id)
     peticionsoftware.should_not be_valid
   end
 
@@ -147,7 +155,8 @@ describe Peticionsoftware do
       :fechayhora   => Time.now,
       :fechacomienzo => 1.month.from_now,
       :dondeobtener   => "http://www.r-project.org",
-      :comentario   => "Compilar con builder c++")
+      :comentario   => "Compilar con builder c++",
+      :laboratorio_ids  => FactoryGirl.create(:laboratorio).id)
     peticionsoftware.should_not be_valid
   end
 
@@ -163,7 +172,8 @@ describe Peticionsoftware do
       :sistemaoperativo => "Windows", 
       :fechacomienzo => 1.month.from_now,
       :dondeobtener   => "http://www.r-project.org",
-      :comentario   => "Compilar con builder c++")
+      :comentario   => "Compilar con builder c++",
+      :laboratorio_ids  => FactoryGirl.create(:laboratorio).id)
     peticionsoftware.should_not be_valid
   end
 
@@ -179,17 +189,33 @@ describe Peticionsoftware do
       :sistemaoperativo => "Windows", 
       :fechayhora     => Time.now,
       :dondeobtener   => "http://www.r-project.org",
-      :comentario   => "Compilar con builder c++")
+      :comentario   => "Compilar con builder c++",
+      :laboratorio_ids  => FactoryGirl.create(:laboratorio).id)
     peticionsoftware.should_not be_valid
   end
 
+  it "can be installed in three laboratorios" do
+    labs = 2.times.map { FactoryGirl.create(:laboratorio)}
+    peticion = Peticionsoftware.create valid_attributes
+    peticion.laboratorios << labs
+    peticion.laboratorios.count.should == 3
+  end
 
-
-
-#  it "is invalid without owner" do
-#    request = Request.new :title => "Change monitor", :description => "Change it, plis!!", :date => Time.now
-#    request.should_not be_valid
-#  end
+  it "is installed in one laboratorio at least" do
+    peticionsoftware = Peticionsoftware.new(
+      :user         => FactoryGirl.create(:user),
+      :cursoacademico_id => 1,
+      :title        => "R", 
+      :titulacion   => "Grado en Informatica", 
+      :curso        => "Primero",
+      :asignatura   => "Calculo",
+      :software     => "R version 11.4",
+      :sistemaoperativo => "Windows",
+      :fechayhora   => Time.now,
+      :fechacomienzo => 1.month.from_now
+    )
+    peticionsoftware.should_not be_valid    
+  end
 
 
 end

@@ -5,6 +5,8 @@
 %table.table.table-striped
   %thead
     %tr
+      - if current_user.admin?
+        %th= 'Profesor'
       %th= 'Asignatura'
       %th= 'Titulación'
       %th= 'Curso'
@@ -12,10 +14,13 @@
       %th= 'Software y Version'
       %th= 'Fecha de Comienzo'
       %th= 'Fecha Petición'
+      %th= 'Laboratorios'
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @peticionsoftwares.each do |peticionsoftware|
       %tr
+        - if current_user.admin? 
+          %td= link_to current_user.username, "http://www.um.es/atica/directorio/?nivel=&lang=0&vista=unidades&search=#{current_user.username}", :target => "_blank"
         %td= link_to peticionsoftware.asignatura, peticionsoftware
         %td= peticionsoftware.titulacion
         %td= peticionsoftware.curso
@@ -23,6 +28,9 @@
         %td= peticionsoftware.software
         %td= peticionsoftware.fechacomienzo
         %td= peticionsoftware.fechayhora.stamp("25/09/2012 (20:52)")
+        %td 
+          - peticionsoftware.laboratorios.each do |lab| 
+            =lab
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_peticionsoftware_path(peticionsoftware), :class => 'btn btn-mini'
           - if current_user.admin?
