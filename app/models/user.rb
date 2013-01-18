@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
 
 
   def admin?
-    self.username == 'chapu@um.es' || self.username == 'raul@um.es' || self.username == 'aha2@um.es'
+#    self.username == 'chapu@um.es' || self.username == 'raul@um.es' || self.username == 'aha2@um.es'
+    ['chapu@um.es','raul@um.es','aha@um.es'].include?(self.username)
   end
 end
