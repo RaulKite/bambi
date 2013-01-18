@@ -1,5 +1,4 @@
 When /^I fill Peticion fields$/ do
-  fill_in 'peticionsoftware_title', :with => "titulo"
   select  '2012/2013', :from  => 'peticionsoftware_cursoacademico_id'
   fill_in 'peticionsoftware_titulacion', :with => "titulacion"
   select  'Primero', :from => 'peticionsoftware_curso'

@@ -5,7 +5,7 @@ Feature: Teachers can make Software Requests
     And I create seeds
     And I go to Nueva Peticion de Software page
     And I fill Peticion fields
-    And I click in New
+    And I click in Guardar
     Then A "peticion de Software" is created
     And I receive an email
 
