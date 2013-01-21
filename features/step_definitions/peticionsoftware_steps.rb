@@ -8,6 +8,9 @@ When /^I fill Peticion fields$/ do
   fill_in 'peticionsoftware_dondeobtener', :with => "http://www.um.es"
   fill_in 'peticionsoftware_fechacomienzo', :with => "2012-02-25"
   fill_in 'peticionsoftware_comentario', :with  => "Comentario"
+  find(:css, "#peticionsoftware_laboratorio_ids_").set(true)
+
+
 end
 
 Then /^A "(.*?)" is created$/ do |arg1|
@@ -25,7 +28,8 @@ When /^I create a new Peticion de Software$/ do
       :software     => "R version 11.4",
       :sistemaoperativo => "Windows",
       :fechacomienzo => 1.month.from_now,
-      :fechayhora  => Time.now
+      :fechayhora  => Time.now,
+      :laboratorio_ids => [Laboratorio.create(:name => "LAb 1", :description  => "LAboratorio1").id, Laboratorio.create(:name => "lab 2", :description => "LAboratorio 2").id]
   ) 
 end
 
