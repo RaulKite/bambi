@@ -1,0 +1,37 @@
+%h1
+  Peticion de software realizada 
+
+  %h2
+  = @peticion.asignatura
+
+  %ul
+  %li 
+    Profesor:  
+    = @peticion.user.username
+  %li 
+    Titulacion:
+    = @peticion.titulacion
+  %li
+    Curso:
+    = @peticion.curso
+  %li
+    Sistema Operativo:
+    = @peticion.sistemaoperativo
+  %li 
+    Software y version:
+    = @peticion.software
+  %li
+    Donde obtenerlo:
+    = @peticion.dondeobtener
+  %li
+    Fecha de comienzo:
+    = @peticion.fechacomienzo
+  %li
+    Laboratorios:
+    - @peticion.laboratorios.each do |lab|
+      = lab
+  %li 
+    Comentario:
+    = @peticion.comentario
+
+

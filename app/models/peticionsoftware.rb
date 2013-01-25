@@ -16,9 +16,9 @@ class Peticionsoftware < ActiveRecord::Base
   validates :fechacomienzo, :presence => true
   validates :laboratorio_ids, :presence => true
 
-  after_create :send_mail
+  after_create :send_mail_on_create
 
-  def send_mail
+  def send_mail_on_create
     PeticionMailer.peticionrealizada_email(self).deliver
  1 end
 end

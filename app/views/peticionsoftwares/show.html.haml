@@ -3,52 +3,40 @@
   %h1 
     Petición de software
 
-%p
-  %strong= 'Profesor'
-  %br
-  = link_to @peticionsoftware.user.username, "http://www.um.es/atica/directorio/?nivel=&lang=0&vista=unidades&search=#{@peticionsoftware.user.username}", :target => "_blank"
-%p
-  %strong= model_class.human_attribute_name(:asignatura) + ':'
-  %br
-  = @peticionsoftware.asignatura
-%p
-  %strong= model_class.human_attribute_name(:titulacion) + ':'
-  %br
-  = @peticionsoftware.titulacion
-%p
-  %strong= model_class.human_attribute_name(:curso) + ':'
-  %br
-  = @peticionsoftware.curso
-%p
-  %strong= model_class.human_attribute_name(:sistemaoperativo) + ':'
-  %br
-  = @peticionsoftware.sistemaoperativo
-%p
-  %strong= model_class.human_attribute_name(:software) + ':'
-  %br
-  = @peticionsoftware.software
-%p
-  %strong= model_class.human_attribute_name(:dondeobtener) + ':'
-  %br
-  = @peticionsoftware.dondeobtener
-%p
-  %strong= model_class.human_attribute_name(:fechacomienzo) + ':'
-  %br
-  = @peticionsoftware.fechacomienzo
-%p
-  %strong= model_class.human_attribute_name(:comentario) + ':'
-  %br
-  = @peticionsoftware.comentario
-%p
-  %strong= model_class.human_attribute_name(:fechayhora) + ':'
-  %br
-  = @peticionsoftware.fechayhora
-%p
-  %strong= model_class.human_attribute_name(:cursoacademico_id) + ':'
-  %br
-  = @peticionsoftware.cursoacademico_id
+    %h2
+    = @peticionsoftware.asignatura
+
+    %ul
+    %li 
+      Profesor:  
+      = @peticionsoftware.user.username
+    %li 
+      Titulacion:
+      = @peticionsoftware.titulacion
+    %li
+      Curso:
+      = @peticionsoftware.curso
+    %li
+      Sistema Operativo:
+      = @peticionsoftware.sistemaoperativo
+    %li 
+      Software y version:
+      = @peticionsoftware.software
+    %li
+      Donde obtenerlo:
+      = @peticionsoftware.dondeobtener
+    %li
+      Fecha de comienzo:
+      = @peticionsoftware.fechacomienzo
+    %li
+      Laboratorios:
+      - @peticionsoftware.laboratorios.each do |lab|
+        = lab
+    %li 
+      Comentario:
+      = @peticionsoftware.comentario
+
 
 .form-actions
-  = link_to t('.back', :default => t("helpers.links.back")), peticionsoftwares_path, :class => 'btn'
-  = link_to t('.edit', :default => t("helpers.links.edit")), edit_peticionsoftware_path(@peticionsoftware), :class => 'btn'
-  = link_to t('.destroy', :default => t("helpers.links.destroy")), peticionsoftware_path(@peticionsoftware), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+  = link_to t('.back', :default => t("helpers.links.back")), peticionsoftwares_path, :class => 'btn btn-primary'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_peticionsoftware_path(@peticionsoftware), :class => 'btn btn-primary'
