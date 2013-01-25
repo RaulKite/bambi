@@ -17,8 +17,15 @@ class Peticionsoftware < ActiveRecord::Base
   validates :laboratorio_ids, :presence => true
 
   after_create :send_mail_on_create
+  after_update :send_mail_on_update
+
 
   def send_mail_on_create
     PeticionMailer.peticionrealizada_email(self).deliver
- 1 end
+  end
+
+  def send_mail_on_update
+    PeticionMailer.peticionmodificada_email(self).deliver
+  end
+
 end

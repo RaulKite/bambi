@@ -7,4 +7,14 @@ class PeticionMailer < ActionMailer::Base
          :bcc => "ccalculo@um.es",
          :subject => "Peticion de Instalacion de software")
   end
+
+
+
+  def peticionmodificada_email(peticion)
+    @peticion = peticion
+    mail(:to => peticion.user.username, 
+         :bcc => "ccalculo@um.es",
+         :subject => "Peticion de Instalacion de software modificada")
+  end
+
 end
