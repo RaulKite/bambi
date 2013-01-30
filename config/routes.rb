@@ -3,7 +3,11 @@ Bambi::Application.routes.draw do
   resources :cursoacademicos
 
 
-  resources :peticionsoftwares
+  resources :peticionsoftwares do
+    collection do
+      get 'search'
+    end
+  end
 
 
   resources :laboratorios

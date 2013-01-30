@@ -3,7 +3,7 @@ class Peticionsoftware < ActiveRecord::Base
   belongs_to :cursoacademico
   has_and_belongs_to_many :laboratorios
 
-  attr_accessible :asignatura, :comentario, :curso, :dondeobtener, :fechacomienzo, :fechayhora, :sistemaoperativo, :software, :title, :titulacion, :user, :cursoacademico_id, :laboratorio_ids
+  attr_accessible :asignatura, :comentario, :curso, :dondeobtener, :fechacomienzo, :fechayhora, :sistemaoperativo, :software, :title, :titulacion, :user, :cursoacademico_id, :laboratorio_ids, :anoanterior, :cuatrimestre
 
   validates :user, :presence => true
   validates :cursoacademico_id, :presence => true
@@ -18,6 +18,21 @@ class Peticionsoftware < ActiveRecord::Base
 
   after_create :send_mail_on_create
   after_update :send_mail_on_update
+
+
+  define_index do
+    indexes asignatura
+    indexes comentario
+    indexes user(:username)
+    indexes software
+    indexes titulacion
+    indexes curso
+    indexes sistemaoperativo
+    indexes user(:username)
+    indexes laboratorios(:name)
+    indexes cuatrimestre
+  end
+
 
 
   def send_mail_on_create

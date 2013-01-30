@@ -6,9 +6,8 @@ class User < ActiveRecord::Base
   has_many :requests
   has_many :peticionsoftwares
 
-
   def admin?
-    ['chapu@um.es','raul@um.es','aha@um.es'].include?(self.username)
+    ['chapu@um.es','raul@um.es','aha2@um.es','alfonso@um.es'].include?(self.username)
   end
 
 

@@ -1,23 +1,28 @@
 = render 'layouts/errors', object: @peticionsoftware
 
-= form_for @peticionsoftware, :html => { :class => 'form-horizontal' } do |f|
+= form_for @peticionsoftware, :html => { :class => 'form-horizontal well' } do |f|
   .control-group
-    = f.label :cursoacademico_id, :class => 'control-label'
+    = f.label "Curso académico", :class => 'control-label'
     .controls
-      = f.select :cursoacademico_id, options_for_select(Cursoacademico.all.map{|c| [c.name,c.id]})
+      = f.select :cursoacademico_id, options_for_select(Cursoacademico.all.map{|c| [c.name,c.id]}), :class => 'text_field input-xlarge'
   .control-group
     = f.label "Titulación", :class => 'control-label'
     .controls
-      = f.text_field :titulacion, :class => 'text_field'
+      = f.text_field :titulacion, :class => 'text_field input-xlarge'
   .control-group
     = f.label :curso, :class => 'control-label'
     .controls
       - @cursos = ['Primero','Segundo','Tercero','Cuarto'] 
       = f.select(:curso, @cursos)
   .control-group
+    = f.label :cuatrimestre, :class => 'control-label'
+    .controls
+      - @cuatrimestres = ['Primero','Segundo','Anual'] 
+      = f.select(:cuatrimestre, @cuatrimestres)
+  .control-group
     = f.label "Asignatura", :class => 'control-label'
     .controls
-      = f.text_field :asignatura, :class => 'text_field'
+      = f.text_field :asignatura, :class => 'text_field input-xlarge'
   .control-group
     = f.label "Sistema Operativo", :class => 'control-label'
     .controls
@@ -26,7 +31,11 @@
   .control-group
     = f.label 'Software y versión', :class => 'control-label'
     .controls
-      = f.text_area :software, :class => 'text_area', :size => '20x10'
+      = f.text_area :software, :class => 'text_area input-xlarge', :size => '20x10'
+  .control-group
+    = f.label 'Es el mismo que el curso anterior?', :class => 'control-label'
+    .controls
+      = f.check_box :anoanterior
   .control-group
     = f.label 'Laboratorios', :class => 'control-label'
     .controls
@@ -37,15 +46,15 @@
   .control-group
     = f.label 'Donde Obtener el Software', :class => 'control-label'
     .controls
-      = f.text_field :dondeobtener, :class => 'text_field'
+      = f.text_field :dondeobtener, :class => 'text_field input-xlarge'
   .control-group
     = f.label 'Fecha de Comienzo', :class => 'control-label'
     .controls
-      = f.text_field :fechacomienzo, :class => 'date', 'data-behaviour' => 'datepicker'
+      = f.text_field :fechacomienzo, :class => 'date input-xlarge', 'data-behaviour' => 'datepicker'
   .control-group
     = f.label :comentario, :class => 'control-label'
     .controls
-      = f.text_area :comentario, :class => 'text_area', :size => '20x10'
+      = f.text_area :comentario, :class => 'text_area input-xlarge', :size => '20x10'
   .form-actions
     = f.submit 'Guardar', :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), peticionsoftwares_path, :class => 'btn btn-danger'

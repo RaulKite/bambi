@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130121175151) do
+ActiveRecord::Schema.define(:version => 20130130110457) do
 
   create_table "cursoacademicos", :force => true do |t|
     t.string   "name"
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(:version => 20130121175151) do
     t.integer  "cursoacademico_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "cuatrimestre"
+    t.boolean  "anoanterior"
   end
 
   add_index "peticionsoftwares", ["cursoacademico_id"], :name => "index_peticionsoftwares_on_cursoacademico_id"

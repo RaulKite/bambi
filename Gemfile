@@ -6,6 +6,7 @@ gem 'rails', '3.2.11'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem 'mysql2'
 
 
 # Gems used only for assets and not required
@@ -38,6 +39,9 @@ gem 'devise'
 gem 'devise_cas_authenticatable', '1.1.3'
 gem 'stamp'
 gem 'letter_opener'
+gem 'thinking-sphinx', '2.0.10', :require => 'thinking_sphinx'
+gem 'kaminari'
+
 
 
 

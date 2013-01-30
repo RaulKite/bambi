@@ -3,9 +3,9 @@ class PeticionsoftwaresController < ApplicationController
   # GET /peticionsoftwares.json
   def index
     if current_user.admin?
-      @peticionsoftwares = Peticionsoftware.all
+      @peticionsoftwares = Peticionsoftware.order('created_at DESC').page(params[:page])
     else
-      @peticionsoftwares = current_user.peticionsoftwares.all
+      @peticionsoftwares = current_user.peticionsoftwares.order('created_at DESC').page(params[:page])
     end
 
     respond_to do |format|
@@ -87,4 +87,10 @@ class PeticionsoftwaresController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def search
+    @peticionsoftwares = Peticionsoftware.search params[:search], :page => params[:page], :per_page => 42, :star => true
+    @Peticionsoftwares = @peticionsoftwares.page(params[:page])
+  end
+
 end
