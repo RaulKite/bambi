@@ -31,6 +31,7 @@ class Peticionsoftware < ActiveRecord::Base
     indexes user(:username)
     indexes laboratorios(:name)
     indexes cuatrimestre
+    indexes cursoacademico(:name)
   end
 
 

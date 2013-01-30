@@ -89,7 +89,7 @@ class PeticionsoftwaresController < ApplicationController
   end
 
   def search
-    @peticionsoftwares = Peticionsoftware.search params[:search], :page => params[:page], :per_page => 42, :star => true
+    @peticionsoftwares = Peticionsoftware.search params[:search], :page => params[:page], :per_page => 42, :star => true, :match_mode => :extended
     @Peticionsoftwares = @peticionsoftwares.page(params[:page])
   end
 
