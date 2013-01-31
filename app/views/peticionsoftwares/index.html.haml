@@ -22,7 +22,7 @@
     - @peticionsoftwares.each do |peticionsoftware|
       %tr
         - if current_user.admin? 
-          %td= link_to current_user.username, "http://www.um.es/atica/directorio/?nivel=&lang=0&vista=unidades&search=#{current_user.username}", :target => "_blank"
+          %td= link_to peticionsoftware.user.username, "http://www.um.es/atica/directorio/?nivel=&lang=0&vista=unidades&search=#{peticionsoftware.user.username}", :target => "_blank"
         %td= link_to peticionsoftware.asignatura, peticionsoftware
         %td= peticionsoftware.titulacion
         %td= peticionsoftware.curso
