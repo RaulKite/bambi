@@ -1,4 +1,5 @@
 class PeticionsoftwaresController < ApplicationController
+  load_and_authorize_resource
   # GET /peticionsoftwares
   # GET /peticionsoftwares.json
   def index

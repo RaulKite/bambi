@@ -1,4 +1,5 @@
 class CursoacademicosController < ApplicationController
+  load_and_authorize_resource
   # GET /cursoacademicos
   # GET /cursoacademicos.json
   def index

@@ -1,4 +1,5 @@
 class Peticionsoftware < ActiveRecord::Base
+
   belongs_to :user
   belongs_to :cursoacademico
   has_and_belongs_to_many :laboratorios

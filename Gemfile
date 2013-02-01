@@ -41,6 +41,7 @@ gem 'stamp'
 gem 'letter_opener'
 gem 'thinking-sphinx', '2.0.10', :require => 'thinking_sphinx'
 gem 'kaminari'
+gem 'cancan'
 
 
 
