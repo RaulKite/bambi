@@ -36,10 +36,10 @@
           - peticionsoftware.laboratorios.each do |lab| 
             =lab
         %td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_peticionsoftware_path(peticionsoftware), :class => 'btn btn-primary btn-mini'
+          = link_to 'Editar', edit_peticionsoftware_path(peticionsoftware), :class => 'btn btn-primary btn-mini'
           - if current_user.admin?
-            = link_to t('.destroy', :default => t("helpers.links.destroy")), peticionsoftware_path(peticionsoftware), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+            = link_to 'Borrar', peticionsoftware_path(peticionsoftware), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
     
-= link_to t('.new', :default => t("helpers.links.new")), new_peticionsoftware_path, :class => 'btn btn-primary'
+= link_to 'Nuevo', new_peticionsoftware_path, :class => 'btn btn-primary'
 
 = paginate @peticionsoftwares 

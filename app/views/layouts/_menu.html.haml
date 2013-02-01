@@ -14,12 +14,20 @@
           %ul.dropdown-menu
             %li= link_to "Nueva Peticion de Software", new_peticionsoftware_path
             %li= link_to "Ver Peticiones de Software", peticionsoftwares_path
-        .btn-group{:class => "pull-left"}
-          %a.btn.dropdown-toggle(data-toggle="dropdown")
-            Laboratorios
-          %ul.dropdown-menu
-            %li= link_to "Nuevo Laboratorio", new_laboratorio_path
-            %li= link_to "Ver Laboratorios", laboratorios_path
+        - if current_user.username == 'raul@um.es'
+          .btn-group{:class => "pull-left"}
+            %a.btn.dropdown-toggle(data-toggle="dropdown")
+              Laboratorios
+            %ul.dropdown-menu
+              %li= link_to "Nuevo Laboratorio", new_laboratorio_path
+              %li= link_to "Ver Laboratorios", laboratorios_path
+          .btn-group{:class => "pull-left"}
+            %a.btn.dropdown-toggle(data-toggle="dropdown")
+              Cursos academicos
+            %ul.dropdown-menu
+              %li= link_to "Nuevo curso academico", new_cursoacademico_path
+              %li= link_to "Ver cursos academicos", cursoacademicos_path
+
         = form_tag search_peticionsoftwares_path, :class => "navbar-search pull-left", :method => :get do 
           = text_field_tag :search, params[:search], :class => "search-query", :placeholder => "Buscar"
         %ul{:class => "nav pull-right"}
