@@ -15,3 +15,5 @@
 /tmp
 
 /config/initializers/devise.rb
+
+db/sphinx/development/*

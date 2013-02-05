@@ -35,6 +35,10 @@ group :test,:development do
     gem 'capybara'
 end
 
+group :development do
+    gem 'capistrano'
+end
+
 gem 'devise'
 gem 'devise_cas_authenticatable', '1.1.3'
 gem 'stamp'
