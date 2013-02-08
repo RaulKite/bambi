@@ -22,12 +22,12 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 
-  gem "haml-rails"
-  gem "twitter-bootstrap-rails"
+  gem 'haml-rails'
+  gem 'twitter-bootstrap-rails'
   gem 'bootstrap-datepicker-rails'
+  gem 'jquery-rails'
 end
 
-gem 'jquery-rails'
 
 group :test,:development do
     gem 'rspec-rails'
