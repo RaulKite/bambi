@@ -25,7 +25,7 @@ production:
   encoding: utf8
   database: bambi_production
   username: root
-  password:
+  password: root
 
 
 cucumber:

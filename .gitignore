@@ -16,4 +16,4 @@
 
 /config/initializers/devise.rb
 
-db/sphinx/development/*
+/db/sphinx/development/*
