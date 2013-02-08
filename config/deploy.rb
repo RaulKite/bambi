@@ -46,8 +46,13 @@ namespace :deploy do
   task :copy_in_database_yml do
     run "cp #{shared_path}/config/database.yml #{latest_release}/config/"
   end
+  desc "Copy devise.rb into latest release"
+  task :copy_in_devise_rb do
+    run "cp #{shared_path}/config/initializers/devise.rb #{latest_release}/config/initializers/devise.rb"
+  end
 end
 before "deploy:assets:precompile", "deploy:copy_in_database_yml"
+before "deploy:assets:precompile", "deploy:copy_in_devise_rb"
 
 
 
