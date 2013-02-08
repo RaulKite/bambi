@@ -51,15 +51,5 @@ gem 'kaminari'
 gem 'cancan'
 
 
-
-
-
-
 # Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
+gem 'unicorn'
