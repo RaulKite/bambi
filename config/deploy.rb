@@ -47,7 +47,7 @@ namespace :deploy do
     run "cp #{shared_path}/config/database.yml #{latest_release}/config/"
   end
 end
-#before "deploy:assets:precompile", "deploy:copy_in_database_yml"
+before "deploy:assets:precompile", "deploy:copy_in_database_yml"
 
 
 
