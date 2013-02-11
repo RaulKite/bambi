@@ -1,0 +1,12 @@
+working_directory "/home/www/bambi/current"
+
+preload_app true;
+
+pid "/home/www/bambi/current/tmp/pids/unicorn.pids"
+stderr_path "/home/www/bambi/current/log/unicorn.log"
+stdout_path "/home/www/bambi/current/log/unicorn.log"
+
+listen "/tmp/unicorn.bambi.sock"
+worker_processes 2
+timeout 30
+
