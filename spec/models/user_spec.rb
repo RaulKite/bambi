@@ -8,7 +8,7 @@ describe 'User' do
   end
 
   it "pepito@um.es isn't admin" do
-    pepito = FactoryGirl.create(:user)
+    pepito = FactoryGirl.build(:user, :username => 'pepito@um.es')
     pepito.should_not be_admin
   end
 end
