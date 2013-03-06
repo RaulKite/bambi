@@ -5,14 +5,14 @@ set :application, "bambi"
 set :scm, :git
 set :repository,  "https://github.com/RaulKite/bambi.git"
 
-role :web, "155.54.205.222"                          # Your HTTP server, Apache/etc
-role :app, "155.54.205.222"                          # This may be the same as your `Web` server
-role :db,  "155.54.205.222", :primary => true # This is where Rails migrations will run
+role :web, "ccalculo.inf.um.es"                          # Your HTTP server, Apache/etc
+role :app, "ccalculo.inf.um.es"                          # This may be the same as your `Web` server
+role :db,  "ccalculo.inf.um.es", :primary => true # This is where Rails migrations will run
 #role :db,  "your slave db-server here"
 #
 
-set :user, "vagrant"
-set :group, "vagrant"
+set :user, "www"
+set :group, "www"
 set :deploy_to, "/home/www/bambi"
 set :use_sudo, false
 
