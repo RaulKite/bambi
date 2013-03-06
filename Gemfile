@@ -22,10 +22,6 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 
-  gem 'haml-rails'
-  gem 'twitter-bootstrap-rails'
-  gem 'bootstrap-datepicker-rails'
-  gem 'jquery-rails'
 end
 
 
@@ -41,6 +37,12 @@ group :development do
     gem 'capistrano'
     gem 'rvm-capistrano'
 end
+
+gem 'haml-rails'
+gem 'twitter-bootstrap-rails'
+gem 'bootstrap-datepicker-rails'
+gem 'jquery-rails'
+
 
 gem 'devise'
 gem 'devise_cas_authenticatable', '1.1.3'
