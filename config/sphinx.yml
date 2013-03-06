@@ -4,3 +4,4 @@ development:
 production:
   enable_star: 1
   min_infix_len: 3
+  bin_path: "/home/www/bin/sphinx/bin"
